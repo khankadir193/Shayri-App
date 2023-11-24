@@ -1,15 +1,13 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
-import lefArrowImage from '../Image/LeftArrow.png';
-import rightArrowImage from '../Image/RightArrow.png';
+import lefArrowImage from "../Image/LeftArrow.png";
+import rightArrowImage from "../Image/RightArrow.png";
 import Slider from "react-slick";
 import Crousal from "./Crousal";
-import shayriContent from './shayriContent.json';
+import shayriContent from "./shayriContent.json";
 import { useNavigate } from "react-router-dom";
 import ApiCall from "./ApiCall";
-
-
 
 const backgroundStyle = {
   backgroundImage: "url('../Image/romantic.jpeg')",
@@ -47,58 +45,69 @@ const useStyles = makeStyles((theme) => ({
   shayariText: {
     fontSize: "24px", // Adjust font size as needed
     lineHeight: "1.5", // Adjust line height as needed
-    fontFamily:'monospace',
-    color:'snow',
-    marginTop:'1rem'
+    fontFamily: "monospace",
+    color: "snow",
+    marginTop: "1rem",
   },
 }));
 
 function DisplayShayri() {
   const classes = useStyles();
   const navigatePage = useNavigate();
-  const [data , setData] = useState([]);
+  const [data, setData] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await ApiCall();
+        setData(response); // Update the state with the data received from ApiCall
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-   apiResponse(); 
+    fetchData();
 
-  },[0]);
+    //  apiResponse();
+  }, [0]);
 
-  const apiResponse = async ()=> {
-    console.log('apiResponse...');
+  const apiResponse = async () => {
+    console.log("apiResponse...");
     const response = await ApiCall();
 
-    console.log('response....From ParentComponetns...??',response);
+    console.log("response....From ParentComponetns...??", response);
     setData(response);
-  }
+  };
 
-  const goBackToHome = ()=>{
-    console.log('go back to home button...');
-    navigatePage('/');
+  const goBackToHome = () => {
+    console.log("go back to home button...");
+    navigatePage("/");
   };
 
   return (
     <>
-    {/* <ApiCall apiResponse={apiResponse}/> */}
-    <div className="display-container">
-      <div className={classes.shayariContainer}>
-        <p className={classes.shayariText}>      
-          <Crousal items={data?.length > 0 ? data : null} />
-        </p>
+      {/* <ApiCall apiResponse={apiResponse}/> */}
+      <div className="display-container">
+        <div className={classes.shayariContainer}>
+          <p className={classes.shayariText}>
+            {data?.length > 0 && <Crousal items={data} />}
+          </p>
+        </div>
+        <button onClick={goBackToHome} className="backBtn">
+          Go Back to home
+        </button>
       </div>
-      <button onClick={goBackToHome} className="backBtn">Go Back to home</button>
-    </div>
     </>
   );
 }
 
 export default DisplayShayri;
 
-
-
-
-{/* this is the previous and next button for moving the content next and prev stage... */}
-          {/* <div class="left-right-arrow-container">
+{
+  /* this is the previous and next button for moving the content next and prev stage... */
+}
+{
+  /* <div class="left-right-arrow-container">
             <button
               style={{border: "none", boxShadow: "none", background: "none"}}
               id="prevBtn"
@@ -113,4 +122,5 @@ export default DisplayShayri;
             >
               <img className="left-right-arrow" src={rightArrowImage} />
             </button>
-          </div> */}
+          </div> */
+}

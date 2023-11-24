@@ -3,7 +3,6 @@ const H2o2 = require('@hapi/h2o2');
 const getData = require('./getData');
 
 const init = async () => {
-  console.log('bbbbbbbbbbbbbbbbbb')
   const server = Hapi.server({
     port: 8080,
     host: 'localhost',
