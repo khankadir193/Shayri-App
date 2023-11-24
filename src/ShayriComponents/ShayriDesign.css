@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* width: 100%;
+    height: 100vw; */
+}
+
+.home-container{
+    background-image: url(../Image/shake.jpg);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    /* opacity: 1; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.display-container{
+    background-image: url(../Image/romantic.jpeg);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 320px) {
+    .display-container{
+      width: 100%;
+      height: 150vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 auto;   
+    }
+}
+
+.left-right-arrow {
+    /* width: 10%; */
+    height: 5vh;
+}
+.left-right-arrow-container {
+    display: flex;
+    align-items: center;
+    gap: 45rem;
+    justify-content: space-between;
+    position: relative;
+    top: 7rem;
+    gap: 45rem;
+    justify-content: center;
+    /* top: -6rem; */
+}
+.backBtn{
+    box-shadow: none;
+    border: 1px solid purple;
+    background: inherit;
+    background-color: antiquewhite;
+    border-radius: 1rem;
+    width: 10rem;
+    height: 2rem;
+    /* background: transparent; */
+}
+.carousel-content{
+    margin-top: 1.5rem;
+}
+/* @media (max-width: 768px)  {
+    .display-container{
+    height: '50vh'
+    }
+} */

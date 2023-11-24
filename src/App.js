@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import HomeComponent from './ShayriComponents/HomeComponent';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import DisplayShayri from './ShayriComponents/DisplayShayri';
+import Demo from './ShayriComponents/Demo';
+// import { Switch } from '@mui/material';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomeComponent />} />
+        <Route path='/shayri' element={<DisplayShayri />} />
+      </Routes>
+    </Router>
   );
 }
 
