@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@mui/styles";
-import Container from "@mui/material/Container";
-import lefArrowImage from "../Image/LeftArrow.png";
-import rightArrowImage from "../Image/RightArrow.png";
-import Slider from "react-slick";
 import Crousal from "./Crousal";
 import shayriContent from "./shayriContent.json";
 import { useNavigate } from "react-router-dom";
@@ -39,15 +35,28 @@ const useStyles = makeStyles((theme) => ({
     padding: "32px", // Adjust padding as needed
     border: "2px solid purple",
     borderRadius: "3rem",
-    height: "45vh",
+    // height: "45vh",
     width: "50%",
+    height:'300px',
+    overflow:"hidden",
+    boxSizing:"border-box",
+    "@media (max-width: 768px)": {
+      height:'auto',
+      // width:"-webkit-fill-available",
+      width:"90%",
+    },
   },
   shayariText: {
     fontSize: "24px", // Adjust font size as needed
     lineHeight: "1.5", // Adjust line height as needed
     fontFamily: "monospace",
     color: "snow",
-    marginTop: "1rem",
+    marginTop: "-1rem",
+    "@media (max-width: 768px)": {
+      fontSize: "10px", // Adjust height for smaller screens
+      marginTop: "-3rem",
+
+    },
   },
 }));
 
@@ -80,13 +89,10 @@ function DisplayShayri() {
   };
 
   const goBackToHome = () => {
-    console.log("go back to home button...");
     navigatePage("/");
   };
 
   return (
-    <>
-      {/* <ApiCall apiResponse={apiResponse}/> */}
       <div className="display-container">
         <div className={classes.shayariContainer}>
           <p className={classes.shayariText}>
@@ -97,7 +103,6 @@ function DisplayShayri() {
           Go Back to home
         </button>
       </div>
-    </>
   );
 }
 

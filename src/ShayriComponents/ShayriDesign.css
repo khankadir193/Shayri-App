@@ -34,7 +34,7 @@
 @media screen and (max-width: 320px) {
     .display-container{
       width: 100%;
-      height: 150vh;
+      /* height: 150vh; */
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -54,9 +54,11 @@
     justify-content: space-between;
     position: relative;
     top: 7rem;
-    gap: 45rem;
+    gap: 40rem;
     justify-content: center;
-    /* top: -6rem; */
+    /* position: absolute;
+    z-index: 100; */
+    
 }
 .backBtn{
     box-shadow: none;
@@ -71,8 +73,23 @@
 .carousel-content{
     margin-top: 1.5rem;
 }
-/* @media (max-width: 768px)  {
-    .display-container{
-    height: '50vh'
+
+.box-Shadow{
+    border: "none !important"; 
+    box-shadow: "none !important"; 
+    background: "none !important"
+}
+
+
+@media (max-width: 320px)  {
+    .left-right-arrow-container {
+        display: flex;
+        align-items: center;
+        gap: 45rem;
+        justify-content: space-between;
+        position: relative;
+        top: 3rem;
+        gap: 15rem;
+        justify-content: center;
     }
-} */
+}
